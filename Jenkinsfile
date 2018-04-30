@@ -15,5 +15,11 @@ node {
 
             sh 'mvn -B -DskipTests clean install'
         }
+
+        stage('Test')
+        {
+            sh 'mvn test'
+            junit 'target/surefire-reports/*.xml'
+        }
     }
 }
