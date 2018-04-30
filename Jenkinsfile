@@ -4,6 +4,15 @@ node {
     {
         stage('Build') 
         {
+            checkout(
+                [$class: 'GitSCM', 
+                branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                submoduleCfg: [], 
+                userRemoteConfigs: [[url: 'https://github.com/lbrandis/simple-java-maven-app']]]
+                )
+
             sh 'mvn -B -DskipTests clean install'
         }
     }
