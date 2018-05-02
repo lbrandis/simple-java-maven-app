@@ -21,7 +21,7 @@ node {
 
         stage("Checkstyle") 
         {
-            sh "./mvnw checkstyle:checkstyle"
+            sh "mvn checkstyle:checkstyle"
                 
             step([$class: 'CheckStylePublisher',
                 canRunOnFailed: true,
