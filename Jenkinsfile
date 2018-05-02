@@ -3,8 +3,7 @@ node {
     git 'https://github.com/lbrandis/simple-java-maven-app.git'
 
     /* Requires the Docker Pipeline plugin to be installed */
-    docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') 
-    {
+    
         stage("Compilation and Analysis") {
             parallel 'Compilation': {
                 sh "./mvnw clean install -DskipTests"
@@ -32,5 +31,5 @@ node {
         stage('Deliver') { 
                 sh './jenkins/scripts/deliver.sh' 
         }
-    }
+    
 }
