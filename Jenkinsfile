@@ -62,9 +62,9 @@ def notifyFailed() {
              to: 'leonid.brandis@mac.com',
              from: 'JenkinsCI',
         //body: "Failed Pipeline: ${currentBuild.fullDisplayName} \n\nPlease check thebuild URL:  ${env.BUILD_URL}",
-             body: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}.
-             <br/>
+             body: '${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}.
+             <br>
                 Check console <a href="${env.BUILD_URL}">output</a> to view full results.<br/>
-             <br/>"
+             <br/>'
 }
 
