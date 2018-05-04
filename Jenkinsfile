@@ -65,7 +65,7 @@ def notifyFailed() {
         //subject: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS!",
         subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",  
         to: 'leonid.brandis@mac.com',
-        color: 'RED'
+        from: 'JenkinsCI'
         
 }
 
