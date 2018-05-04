@@ -58,7 +58,7 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body: "Something is wrong with ${env.BUILD_URL}",
+    emailext body: "Failed Pipeline: ${currentBuild.fullDisplayName} \nPlease check thebuild URL:  ${env.BUILD_URL}",
     //body: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS: Check console output at $BUILD_URL to view the results." , 
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
