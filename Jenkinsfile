@@ -58,11 +58,12 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body: "Something is wrong with ${env.BUILD_URL}"
+    emailext body: "Something is wrong with ${env.BUILD_URL}",
     //body: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS: Check console output at $BUILD_URL to view the results." , 
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
         //subject: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS!",
-        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}"  
+        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",  
         to: 'leonid.brandis@mac.com'
 }
+
