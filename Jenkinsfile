@@ -58,7 +58,7 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body:  "${currentBuild.PROJECT_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.result}: Check console output at ${env.BUILD_URL} to view the results." , 
+    emailext body:  "${env.PROJECT_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.result}: Check console output at ${env.BUILD_URL} to view the results." , 
         subject: "${env.BUILD_STATUS} - ${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER}",
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
