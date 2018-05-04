@@ -58,14 +58,18 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body: "Failed Pipeline: ${currentBuild.fullDisplayName} \n\nPlease check thebuild URL:  ${env.BUILD_URL}",
-    //body: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS: Check console output at $BUILD_URL to view the results." , 
+    emailext 
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
-        //subject: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS!",
-        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",  
+        subject: "${env.BUILD_STATUS} - ${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER}",  
         to: 'leonid.brandis@mac.com',
         from: 'JenkinsCI'
-        
+        //body: "Failed Pipeline: ${currentBuild.fullDisplayName} \n\nPlease check thebuild URL:  ${env.BUILD_URL}",
+        body: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}.<br/>
+<br/>
+Check console <a href="${env.BUILD_URL}">output</a> to view full results.<br/>
+<br/>
+
+
 }
 
