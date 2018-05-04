@@ -21,7 +21,13 @@ node {
             }
             catch(e){
                 currentBuild.result = "FAILED"
-                notifyFailed()
+                
+                emailext body: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS: Check console output at $BUILD_URL to view the results." , 
+        recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
+                             [$class: 'RequesterRecipientProvider']], 
+        subject: "env.$PROJECT_NAME - Build # env.$BUILD_NUMBER - env.$BUILD_STATUS!", 
+        to: 'leonid.brandis@mac.com'
+
                 throw e
             }
         }
