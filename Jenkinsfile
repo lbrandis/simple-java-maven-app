@@ -58,8 +58,8 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body:  "${env.PROJECT_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.result}: Check console output at ${env.BUILD_URL} to view the results." , 
-        subject: "${env.BUILD_STATUS} - ${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER}",
+    emailext body:  "<br>${env.PROJECT_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.result}: Check console output at ${env.BUILD_URL} to view the results.</br>" , 
+        subject: "${currentBuild.result} - ${currentBuild.fullDisplayName}",
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
         to: 'leonid.brandis@mac.com',
