@@ -58,10 +58,9 @@ def notifyStarted() { /* .. */ }
 def notifySuccessful() { /* .. */ }
  
 def notifyFailed() {
-    emailext body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""", 
+    emailext body: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results." , 
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
-        subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+        subject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!", 
         to: 'leonid.brandis@mac.com'
 }
