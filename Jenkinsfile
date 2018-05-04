@@ -63,5 +63,5 @@ def notifyFailed() {
         recipientProviders: [[$class: 'DevelopersRecipientProvider'], 
                              [$class: 'RequesterRecipientProvider']], 
         to: 'leonid.brandis@mac.com',
-        from: JenkinsCI
+        from: "JenkinsCI"
 }
